@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>顶寻商标服务 — 品牌资产投资与转让</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ivory: #FAFAF7;
+            --ivory-deep: #F5F3EF;
+            --silver: #B8B8B8;
+            --silver-light: #D0D0D0;
+            --silver-dark: #8A8A8A;
+            --charcoal: #2D2D2D;
+            --charcoal-light: #4A4A4A;
+            --accent: #A0A0A0;
+            --border: #E5E3DF;
+            --border-light: #F0EEEA;
+            --shadow: rgba(45, 45, 45, 0.06);
+            --shadow-hover: rgba(45, 45, 45, 0.12);
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-fast: all 0.25s ease-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--ivory);
+            color: var(--charcoal);
+            line-height: 1.7;
+            font-size: 15px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(250, 250, 247, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
+            transition: var(--transition-fast);
+        }
+
+        nav.scrolled {
+            box-shadow: 0 1px 20px var(--shadow);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            letter-spacing: 0.08em;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--silver);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+        }
+
+        .logo:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--silver-dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            position: relative;
+            transition: var(--transition-fast);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--charcoal);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--charcoal);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--ivory);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(184, 184, 184, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(184, 184, 184, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            max-width: 900px;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--silver-dark);
+            margin-bottom: 2rem;
+            padding: 0.5rem 1.2rem;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .hero h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.04em;
+        }
+
+        .hero h1 span {
+            display: block;
+            font-size: 0.55em;
+            font-weight: 400;
+            color: var(--silver-dark);
+            margin-top: 0.8rem;
+            letter-spacing: 0.1em;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hero-desc {
+            font-size: 1.15rem;
+            color: var(--charcoal-light);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--silver-dark);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-hint svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--silver-dark);
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* ===== FILTER BAR ===== */
+        .filter-section {
+            background: var(--ivory-deep);
+            padding: 2rem;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 60px;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .filter-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.4rem;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--silver-dark);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 100px;
+            transition: var(--transition-fast);
+            letter-spacing: 0.02em;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--silver);
+            color: var(--charcoal);
+            background: white;
+        }
+
+        .filter-btn.active {
+            background: var(--charcoal);
+            color: var(--ivory);
+            border-color: var(--charcoal);
+        }
+
+        /* ===== ASSETS SECTION ===== */
+        .assets-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem 6rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--silver-dark);
+            font-size: 0.95rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .assets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 2rem;
+        }
+
+        /* ===== TRADEMARK CARD ===== */
+        .tm-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .tm-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--silver), var(--silver-light));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .tm-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px var(--shadow-hover);
+            border-color: var(--silver-light);
+        }
+
+        .tm-card:hover::before {
+            opacity: 1;
+        }
+
+        .tm-card-header {
+            padding: 2rem 2rem 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+            position: relative;
+        }
+
+        .tm-category-tag {
+            display: inline-block;
+            padding: 0.3rem 0.9rem;
+            background: var(--ivory-deep);
+            color: var(--silver-dark);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            border-radius: 100px;
+            margin-bottom: 1rem;
+        }
+
+        .tm-name {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.04em;
+        }
+
+        .tm-subtitle {
+            font-size: 0.85rem;
+            color: var(--silver-dark);
+            font-weight: 400;
+        }
+
+        .tm-card-body {
+            padding: 1.5rem 2rem;
+        }
+
+        .tm-desc {
+            font-size: 0.9rem;
+            color: var(--charcoal-light);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .tm-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tm-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .tm-meta-label {
+            font-size: 0.7rem;
+            color: var(--silver);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+
+        .tm-meta-value {
+            font-size: 0.85rem;
+            color: var(--charcoal-light);
+            font-weight: 500;
+        }
+
+        .tm-price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .tm-price {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--charcoal);
+        }
+
+        .tm-price-note {
+            font-size: 0.75rem;
+            color: var(--silver);
+            font-weight: 400;
+            margin-left: 0.3rem;
+        }
+
+        .tm-cta {
+            padding: 0.5rem 1.2rem;
+            background: var(--charcoal);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            border: none;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .tm-cta:hover {
+            background: var(--charcoal-light);
+            transform: scale(1.05);
+        }
+
+        /* ===== VALUE PROPOSITION ===== */
+        .value-section {
+            background: var(--ivory-deep);
+            padding: 6rem 2rem;
+        }
+
+        .value-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 2.5rem;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: var(--transition);
+        }
+
+        .value-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px var(--shadow);
+        }
+
+        .value-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--ivory);
+            border-radius: 50%;
+            border: 1px solid var(--border);
+        }
+
+        .value-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--silver-dark);
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .value-card h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 0.8rem;
+        }
+
+        .value-card p {
+            font-size: 0.9rem;
+            color: var(--charcoal-light);
+            line-height: 1.8;
+        }
+
+        /* ===== PROCESS SECTION ===== */
+        .process-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+            padding: 1.5rem;
+        }
+
+        .step-number {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--silver-light);
+            line-height: 1;
+            margin-bottom: 1rem;
+            transition: var(--transition-fast);
+        }
+
+        .process-step:hover .step-number {
+            color: var(--silver-dark);
+        }
+
+        .step-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .step-desc {
+            font-size: 0.85rem;
+            color: var(--charcoal-light);
+            line-height: 1.7;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact-section {
+            background: var(--charcoal);
+            color: var(--ivory);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .contact-inner {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-section h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .contact-section p {
+            color: var(--silver);
+            font-size: 1rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .wechat-card {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 2rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .wechat-card:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: scale(1.02);
+        }
+
+        .qr-container {
+            display: inline-block;
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        .qr-container:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: scale(1.02);
+        }
+
+        .qr-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 12px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .qr-hint {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--silver);
+        }
+
+        .wechat-icon {
+            width: 40px;
+            height: 40px;
+            background: #07C160;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .wechat-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        .wechat-info {
+            text-align: left;
+        }
+
+        .wechat-label {
+            font-size: 0.75rem;
+            color: var(--silver);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.2rem;
+        }
+
+        .wechat-id {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-note {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: var(--silver-dark);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--ivory-deep);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
+            color: var(--silver-dark);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== MODAL ===== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(45, 45, 45, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2.5rem;
+            position: relative;
+            animation: modalIn 0.4s ease;
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-fast);
+        }
+
+        .modal-close:hover {
+            background: var(--ivory-deep);
+            transform: rotate(90deg);
+        }
+
+        .modal-close svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--charcoal-light);
+            stroke-width: 2;
+        }
+
+        .modal h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            color: var(--charcoal);
+        }
+
+        .modal-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .modal-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-section h4 {
+            font-size: 0.8rem;
+            color: var(--silver-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-section p {
+            font-size: 0.9rem;
+            color: var(--charcoal-light);
+            line-height: 1.8;
+        }
+
+        .modal-price {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin: 1.5rem 0;
+        }
+
+        .modal-cta {
+            width: 100%;
+            padding: 1rem;
+            background: var(--charcoal);
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .modal-cta:hover {
+            background: var(--charcoal-light);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+
+            .assets-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tm-card {
+                max-width: 100%;
+            }
+
+            .value-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-meta {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="logo">顶寻商标服务</a>
+            <ul class="nav-links">
+                <li><a href="#assets">品牌资产</a></li>
+                <li><a href="#value">服务优势</a></li>
+                <li><a href="#process">交易流程</a></li>
+                <li><a href="#contact">联系洽谈</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-label">品牌资产投资 · 商标转让服务</div>
+            <h1>
+                顶寻
+                <span>为您甄选值得拥有的品牌名称</span>
+            </h1>
+            <p class="hero-desc">
+                每一个商标都是一段可能被实现的品牌故事。我们精心培育中英文双语品牌资产，
+                覆盖商业、餐饮、服装、茶叶等核心品类，为创业者与品牌方提供即买即用的高品质商标资源。
+            </p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">10</span>
+                    <span class="stat-label">注册商标</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">8</span>
+                    <span class="stat-label">待售资产</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">4.8<span style="font-size:1.2rem">万</span></span>
+                    <span class="stat-label">最高成交</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-hint">
+            <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </div>
+    </section>
+
+    <!-- FILTER -->
+    <div class="filter-section">
+        <div class="filter-inner">
+            <button class="filter-btn active" data-filter="all">全部资产</button>
+            <button class="filter-btn" data-filter="商业服务">商业服务</button>
+            <button class="filter-btn" data-filter="餐饮住宿">餐饮住宿</button>
+            <button class="filter-btn" data-filter="服装服饰">服装服饰</button>
+            <button class="filter-btn" data-filter="茶叶食品">茶叶食品</button>
+            <button class="filter-btn" data-filter="品牌打包">品牌打包</button>
+        </div>
+    </div>
+
+    <!-- ASSETS -->
+    <section class="assets-section" id="assets">
+        <div class="section-header">
+            <h2>可售品牌资产</h2>
+            <p>每一件商标均已完成注册，状态稳定，即买即用。支持单品转让与品牌资产包整体出让。</p>
+        </div>
+
+        <div class="assets-grid" id="assetsGrid">
+            
+            <!-- Card 1: 顶寻 35 -->
+            <div class="tm-card fade-in" data-category="商业服务" onclick="openModal('dingxun35')">
+                <div class="tm-card-header">
+                    <span class="tm-category-tag">第35类 · 商业服务</span>
+                    <h3 class="tm-name">顶寻</h3>
+                    <p class="tm-subtitle">Dǐng Xún · 顶尖寻觅</p>
+                </div>
+                <div class="tm-card-body">
+                    <p class="tm-desc">简洁有力的商业品牌名称，二字易记，寓意"顶尖寻觅"。覆盖广告、电商、商业管理全链条，适合电商平台、商业咨询公司、连锁品牌总部使用。</p>
+                    <div class="tm-meta">
+                        <div class="tm-meta-item">
+                            <span class="tm-meta-label">注册号</span>
+                            <span class="tm-meta-value">74955627</span>
+                        </div>
+                        <div class="tm-meta-item">
+                            <span class="tm-meta-label">有效期</span>
+                            <span class="tm-meta-value">2024.04 — 2034.04</span>
+                        </div>
+                    </div>
+                    <div class="tm-price-row">
+                        <div>
+                            <span class="tm-price">¥25,000</span>
+                            <span class="tm-price-note">可议价</span>
+                        </div>
+                        <button class="tm-cta">了解详情</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: 顶寻 43 -->
+            <div class="tm-card fade-in" data-category="餐饮住宿" onclick="openModal('dingxun43')">
+                <div class="tm-card-header">
+                    <span class="tm-category-tag">第43类 · 餐饮住宿</span>
+                    <h3 class="tm-name">顶寻</h3>
+                    <p class="tm-subtitle">Dǐng Xún · 餐饮连锁</p>
+                </div>
+                <div class="tm-card-body">
+                    <p class="tm-desc">餐饮住宿行业品牌名，二字易传播，适配连锁餐厅、酒店、外卖平台。覆盖餐厅、酒店、外卖、流动饮食全场景，与35类商业线可打包形成品牌全链条保护。</p>
+                    <div class="tm-meta">
+                        <div class="tm-meta-item">
+                            <span class="tm-meta-label">注册号</span>
+                            <span class="tm-meta-value">83314963</span>
+                        </div>
+                        <div class="tm-meta-item">
+                            <span class="tm-meta-label">有效期</span>
+                            <span class="tm-meta-value">2025.07 — 2035.07</span>
+                        </div>
+                    </div>
+                    <div class="tm-price-row">
+                        <div>
+                            <span class="tm-price">¥25,000</span>
+                            <span class="tm-price-note">可议价</span>
+                        </div>
+                        <button class="tm-cta">了解详情</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: 顶寻打包 -->
+            <div class="tm-card fade-in" data-category="品牌打包" onclick="openModal('dingxunBundle')">
+                <div class="tm-card-header">
+                    <span class="tm-category-tag">品牌资产包</span>
+                    <h3 class="tm-name">顶寻 · 双线组合</h3>
+                    <p class="tm-subtitle">35类商业 + 43类餐饮</p>
+                </div>
+                <div class="tm-card-body">
+                    <p class="tm-desc">同一品牌的商业服务线与餐饮住宿线双线组合，适合计划做加盟/连锁的品牌方。打包购买节省单独谈判成本，品牌一致性更强，攻防一体。</p>
+                    <div class="tm-meta">
+                        <div class="tm-meta-item">
+                            <span class="tm-meta-label">注册号</span>
+                            <span class="tm-meta-value">74955627 / 83314963</span>
+                        </div>
+                        <div class="tm-meta-item">
+                            <span class="tm-meta-label">有效期</span>
+                            <span class="tm-meta-value">2034.04 / 2035.07</span>
+                        </div>
+                    </div>
+                    <div class="tm-price-row">
+                        <div>
+                            <span class="tm-price">¥45,000</span>
+                            <span class="tm-price-note">打包优惠</span>
+                        </div>
+                        <button class="tm-cta">了解详情</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: 去白 -->
+            <div class="tm-card fade-in" data-category="餐饮住宿" onclick="openModal('qubai')">
+                <div class="tm-card-header">
+                    <span class="tm-category-tag">第43类 · 餐饮住宿</span>
+                    <h3 class="tm-name">去白</h3>
+                    <p class="tm-subtitle">Qù Bái · 留白哲学</p>
+                </div>
+                <div class="tm-card-body">
+                    <p class="tm-desc">东方美学意境品牌名，取自"去白留墨"的留白哲学，极具新中式茶饮、茶空间、美学餐厅气质。意境溢价高，辨识度强，适合生活方式品牌。</p>
+                    <div class="tm-meta">
+                        <div class="tm-meta-item">
+                            <span class="tm-meta-label">注册号</span>
+                            <span class="tm-meta-value">77958484</span>
+                        </div>
+                        <div class="tm-meta-item">
+                            <span class="tm-meta-label">有效期</span>
+                            <span class="tm-meta-value">2024.10 — 2034.10</span>
+                        </div>
+                    </div>
+                    <div class="tm-price-row">
+                        <div>
+                            <span class="tm-price">¥35,000</span>
+                            <span class="tm-price-note">可议价</span>
+                        </div>
+                        <button class="tm-cta">了解详情</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5: Re the White 43 -->
+            <div class="tm-card fade-in" data-category="餐饮住宿" onclick="openModal('rewhite43')">
+                <div class="tm-card-header">
+                    <span class="tm-category-tag">第43类 · 餐饮住宿</span>
+                    <h3 class="tm-name">Re the White</h3>
+                    <p class="tm-subtitle">英文品牌 · 东方意境国际化</p>
+                </div>
+                <div class="tm-card-body">
+                    <p class="tm-desc">"去白"英文版，Re=回/再度，White=留白/素白，传达"回归本真"的品牌哲学。适合计划出海的新中式品牌、国际餐饮集团中国区布局。</p>
+                    <div class="tm-meta">
+                        <div class="tm-meta-item">
+                            <span class="tm-meta-label">注册号</span>
+                            <span class="tm-meta-value">78686622</span>
+                        </div>
+                        <div class="tm-meta-item">
+                            <span class="tm-meta-label">有效期</span>
+                            <span class="tm-meta-value">2024.11 — 2034.11</span>
+                        </div>
+                    </div>
+                    <div class="tm-price-row">
+                        <div>
+                            <span class="tm-price">¥35,000</span>
+                            <span class="tm-price-note">可议价</span>
+                        </div>
+                        <button class="tm-cta">了解详情</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6: Re the White 35 -->
+            <div class="tm-card fade-in" data-category="商业服务" onclick="openModal('rewhite35')">
+                <div class="tm-card-header">
+                    <span class="tm-category-tag">第35类 · 商业服务</span>
+                    <h3 class="tm-name">Re the White</h3>
+                    <p class="tm-subtitle">英文品牌 · 特许经营刚需</p>
+                </div>
+                <div class="tm-card-body">
+                    <p class="tm-desc">东方意境品牌的商业服务线，覆盖特许经营、广告、电商、商业管理。品牌连锁化、加盟化的刚需类别，适合计划做加盟的新中式品牌。</p>
+                    <div class="tm-meta">
+                        <div class="tm-meta-item">
+                            <span class="tm-meta-label">注册号</span>
+                            <span class="tm-meta-value">78685462</span>
+                        </div>
+                        <div class="tm-meta-item">
+                            <span class="tm-meta-label">有效期</span>
+                            <span class="tm-meta-value">2024.11 — 2034.11</span>
+                        </div>
+                    </div>
+                    <div class="tm-price-row">
+                        <div>
+                            <span class="tm-price">¥35,000</span>
+                            <span class="tm-price-note">可议价</span>
+                        </div>
+                        <button class="tm-cta">了解详情</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 7: Re the White 25 -->
+            <div class="tm-card fade-in" data-category="服装服饰" onclick="openModal('rewhite25')">
+                <div class="tm-card-header">
+                    <span class="tm-category-tag">第25类 · 服装服饰</span>
+                    <h3 class="tm-name">Re the White</h3>
+                    <p class="tm-subtitle">英文品牌 · 美学服饰</p>
+                </div>
+                <div class="tm-card-body">
+                    <p class="tm-desc">东方美学服装品牌名，从日常成衣到婚纱礼服全覆盖。适合新中式服装品牌、汉服现代化产品线、禅修/瑜伽服饰品牌，意境独特，出海友好。</p>
+                    <div class="tm-meta">
+                        <div class="tm-meta-item">
+                            <span class="tm-meta-label">注册号</span>
+                            <span class="tm-meta-value">78686459</span>
+                        </div>
+                        <div class="tm-meta-item">
+                            <span class="tm-meta-label">有效期</span>
+                            <span class="tm-meta-value">2024.11 — 2034.11</span>
+                        </div>
+                    </div>
+                    <div class="tm-price-row">
+                        <div>
+                            <span class="tm-price">¥30,000</span>
+                            <span class="tm-price-note">可议价</span>
+                        </div>
+                        <button class="tm-cta">了解详情</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 8: Re the White 打包 -->
+            <div class="tm-card fade-in" data-category="品牌打包" onclick="openModal('rewhiteBundle')">
+                <div class="tm-card-header">
+                    <span class="tm-category-tag">品牌资产包</span>
+                    <h3 class="tm-name">Re the White · 全线组合</h3>
+                    <p class="tm-subtitle">25类服装 + 35类商业 + 43类餐饮</p>
+                </div>
+                <div class="tm-card-body">
+                    <p class="tm-desc">三线全类别覆盖的品牌资产包，中英文品牌保护完整。适合计划做多品类生活方式品牌、品牌集团化布局、出海战略的商家。打包购买，品牌一致性更强。</p>
+                    <div class="tm-meta">
+                        <div class="tm-meta-item">
+                            <span class="tm-meta-label">注册号</span>
+                            <span class="tm-meta-value">78686622 / 78685462 / 78686459</span>
+                        </div>
+                        <div class="tm-meta-item">
+                            <span class="tm-meta-label">有效期</span>
+                            <span class="tm-meta-value">均至 2034.11</span>
+                        </div>
+                    </div>
+                    <div class="tm-price-row">
+                        <div>
+                            <span class="tm-price">¥80,000</span>
+                            <span class="tm-price-note">打包优惠</span>
+                        </div>
+                        <button class="tm-cta">了解详情</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 9: 潮凤单 -->
+            <div class="tm-card fade-in" data-category="茶叶食品" onclick="openModal('chaofengdan')">
+                <div class="tm-card-header">
+                    <span class="tm-category-tag">第30类 · 茶叶食品</span>
+                    <h3 class="tm-name">潮凤单</h3>
+                    <p class="tm-subtitle">Cháo Fèng Dān · 潮州凤凰单丛</p>
+                </div>
+                <div class="tm-card-body">
+                    <p class="tm-desc">潮州凤凰单丛茶品类专用品牌名。名称自带产地+品类属性，行业指向极其精准，搜索引擎/电商平台自然流量高。品类垄断型资产，适合产区茶商与垂直电商。</p>
+                    <div class="tm-meta">
+                        <div class="tm-meta-item">
+                            <span class="tm-meta-label">注册号</span>
+                            <span class="tm-meta-value">86893467</span>
+                        </div>
+                        <div class="tm-meta-item">
+                            <span class="tm-meta-label">有效期</span>
+                            <span class="tm-meta-value">2026.02 — 2036.02</span>
+                        </div>
+                    </div>
+                    <div class="tm-price-row">
+                        <div>
+                            <span class="tm-price">¥40,000</span>
+                            <span class="tm-price-note">可议价</span>
+                        </div>
+                        <button class="tm-cta">了解详情</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- VALUE PROPOSITION -->
+    <section class="value-section" id="value">
+        <div class="value-inner">
+            <div class="section-header">
+                <h2>为什么选择我们</h2>
+                <p>不同于批量注册的粗放式商标投资，我们坚持精品策略，每一件商标都经过精心策划与培育。</p>
+            </div>
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <h3>精品命名</h3>
+                    <p>每一个商标名称都经过语义、音韵、文化意境的多重筛选，确保易记、有寓意、有文化厚度。</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>双线布局</h3>
+                    <p>坚持中英文双语配套注册，品牌可国内可出海。多类别防御性布局，攻防一体，资产完整性高。</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <h3>即买即用</h3>
+                    <p>全部商标已完成注册，状态稳定有效。无需等待审查周期，签约即可启动品牌使用与转让流程。</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h3>安全交易</h3>
+                    <p>支持平台担保交易与官方转让流程，3-6个月完成过户。全程合规，买方权益受法律保护。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="process-section" id="process">
+        <div class="section-header">
+            <h2>交易流程</h2>
+            <p>简洁透明的四步完成商标转让，专业高效，省心省力。</p>
+        </div>
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-number">01</div>
+                <div class="step-title">意向沟通</div>
+                <div class="step-desc">微信或电话沟通意向商标，确认类别、价格与转让条件</div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">02</div>
+                <div class="step-title">签署协议</div>
+                <div class="step-desc">签署《商标转让协议》，明确权利义务与付款方式</div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">03</div>
+                <div class="step-title">平台担保</div>
+                <div class="step-desc">买方付款至平台担保账户，双方确认后启动转让程序</div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">04</div>
+                <div class="step-title">过户完成</div>
+                <div class="step-desc">共同向商标局提交转让申请，3-6个月取得转让核准</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact-section" id="contact">
+        <div class="contact-inner">
+            <h2>洽谈合作</h2>
+            <p>对以上商标资产感兴趣？或需要定制品牌命名与注册方案？<br>添加微信，直接沟通。</p>
+            <div class="qr-container">
+                <img src="wechat-qr.png" alt="微信二维码" class="qr-image">
+                <p class="qr-hint">扫码添加微信 · 备注"商标咨询"</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p class="footer-text">顶寻商标服务 · 品牌资产投资与转让 · 所有商标均为已注册有效状态</p>
+    </footer>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="modal" onclick="closeModal(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">
+                <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // ===== NAVBAR SCROLL =====
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ===== FILTER =====
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.tm-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                
+                cards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // ===== FADE IN ANIMATION =====
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // ===== MODAL DATA =====
+        const modalData = {
+            dingxun35: {
+                name: '顶寻',
+                subtitle: '第35类 · 商业服务线',
+                category: '商业服务',
+                regNo: '74955627',
+                valid: '2024.04.21 — 2034.04.20',
+                scope: '广告；商业经营；组织商业或广告展览；为商品和服务的买卖双方提供在线市场；商业信息；替他人推销；人事管理咨询；商业企业迁移；文秘；会计；销售展示架出租；药品零售或批发服务',
+                desc: '简洁有力的商业品牌名称，二字易记，寓意"顶尖寻觅"。35类覆盖广告、电商、商业管理全链条，适合电商平台、商业咨询公司、连锁品牌总部使用。注册满1年，状态稳定，即买即用。',
+                price: '¥25,000',
+                note: '可议价，支持平台担保交易'
+            },
+            dingxun43: {
+                name: '顶寻',
+                subtitle: '第43类 · 餐饮住宿线',
+                category: '餐饮住宿',
+                regNo: '83314963',
+                valid: '2025.07.28 — 2035.07.27',
+                scope: '养老院；餐厅；饭店；食宿；酒店住宿服务；日间托儿所；动物寄养；桌椅出租；外卖餐厅；流动饮食供应',
+                desc: '餐饮住宿行业品牌名，二字易传播，适配连锁餐厅、酒店、外卖平台。43类覆盖餐厅、酒店、外卖、流动饮食全场景，与35类商业线可打包形成品牌全链条保护。',
+                price: '¥25,000',
+                note: '可议价，支持平台担保交易'
+            },
+            dingxunBundle: {
+                name: '顶寻 · 双线组合',
+                subtitle: '35类商业 + 43类餐饮住宿',
+                category: '品牌打包',
+                regNo: '74955627 / 83314963',
+                valid: '2034.04.20 / 2035.07.27',
+                scope: '35类：广告、电商、商业管理；43类：餐厅、酒店、外卖、流动饮食',
+                desc: '同一品牌的商业服务线与餐饮住宿线双线组合，适合计划做加盟/连锁的品牌方。打包购买节省单独谈判成本，品牌一致性更强，攻防一体。',
+                price: '¥45,000',
+                note: '打包优惠，比单买节省¥5,000'
+            },
+            qubai: {
+                name: '去白',
+                subtitle: '第43类 · 餐饮住宿',
+                category: '餐饮住宿',
+                regNo: '77958484',
+                valid: '2024.10.14 — 2034.10.13',
+                scope: '养老院；日间托儿所；动物寄养；出租椅子、桌子、桌布和玻璃器皿；餐具出租；烹饪设备出租；饮水机出租；照明设备出租',
+                desc: '东方美学意境品牌名，取自"去白留墨"的留白哲学，极具新中式茶饮、茶空间、美学餐厅气质。43类餐饮住宿全覆盖，适合新中式餐饮连锁、茶文化空间、东方美学生活方式品牌。意境溢价高，辨识度强。',
+                price: '¥35,000',
+                note: '可议价，支持平台担保交易'
+            },
+            rewhite43: {
+                name: 'Re the White',
+                subtitle: '第43类 · 餐饮住宿',
+                category: '餐饮住宿',
+                regNo: '78686622',
+                valid: '2024.11.07 — 2034.11.06',
+                scope: '养老院；日间托儿所；动物寄养；出租椅子、桌子、桌布和玻璃器皿；餐具出租；烹饪设备出租；饮水机出租；照明设备出租',
+                desc: '"去白"英文版，Re=回/再度，White=留白/素白，整体传达"回归本真"的品牌哲学。43类餐饮住宿全场景，适合计划出海的新中式品牌、国际餐饮集团中国区布局、生活方式酒店品牌。',
+                price: '¥35,000',
+                note: '可议价，支持平台担保交易'
+            },
+            rewhite35: {
+                name: 'Re the White',
+                subtitle: '第35类 · 商业服务',
+                category: '商业服务',
+                regNo: '78685462',
+                valid: '2024.11.07 — 2034.11.06',
+                scope: '商业管理辅助；职业介绍；会计；推销；特许经营；广告；销售展示架出租；商业中介服务；为商品和服务的买卖双方提供在线市场；药品零售或批发服务',
+                desc: '东方意境品牌的商业服务线，35类覆盖特许经营、广告、电商、商业管理，是品牌连锁化、加盟化的刚需类别。适合计划做加盟/特许经营的新中式品牌、跨境电商、生活方式集合店。',
+                price: '¥35,000',
+                note: '可议价，支持平台担保交易'
+            },
+            rewhite25: {
+                name: 'Re the White',
+                subtitle: '第25类 · 服装服饰',
+                category: '服装服饰',
+                regNo: '78686459',
+                valid: '2024.11.07 — 2034.11.06',
+                scope: '服装；成品衣；婴儿全套衣；游泳衣；防水服；鞋；帽；袜；手套；领带；围巾；腰带；婚纱',
+                desc: '东方美学服装品牌名，25类全服装覆盖，从日常成衣到婚纱礼服。适合新中式服装品牌、汉服现代化产品线、禅修/瑜伽服饰品牌。意境独特，国际化表达，出海友好。',
+                price: '¥30,000',
+                note: '可议价，支持平台担保交易'
+            },
+            rewhiteBundle: {
+                name: 'Re the White · 全线组合',
+                subtitle: '25类服装 + 35类商业 + 43类餐饮',
+                category: '品牌打包',
+                regNo: '78686622 / 78685462 / 78686459',
+                valid: '均至 2034.11.06',
+                scope: '25类：全服装覆盖；35类：特许经营、广告、电商；43类：餐饮住宿全场景',
+                desc: '三线全类别覆盖的品牌资产包，中英文品牌保护完整。适合计划做多品类生活方式品牌、品牌集团化布局、出海战略的商家。打包购买节省单独谈判成本，品牌一致性更强。',
+                price: '¥80,000',
+                note: '打包优惠，比单买节省¥20,000'
+            },
+            chaofengdan: {
+                name: '潮凤单',
+                subtitle: '第30类 · 茶叶食品',
+                category: '茶叶食品',
+                regNo: '86893467',
+                valid: '2026.02.21 — 2036.02.20',
+                scope: '糖果；咖啡；茶；冰淇淋；蜂蜜；糕点；咖啡饮料；茶饮料；茶叶；乌龙茶',
+                desc: '潮州凤凰单丛茶品类专用品牌名。名称自带产地（潮州）+ 品类（凤凰单丛）属性，行业指向极其精准，搜索引擎/电商平台自然流量高。30类覆盖茶叶、茶饮料、乌龙茶全品类，适合潮州产区茶商、凤凰单丛垂直电商、茶品牌创业者。品类垄断型资产。',
+                price: '¥40,000',
+                note: '可议价，支持平台担保交易'
+            }
+        };
+
+        function openModal(id) {
+            const data = modalData[id];
+            if (!data) return;
+            
+            const content = document.getElementById('modalContent');
+            content.innerHTML = `
+                <h3>${data.name}</h3>
+                <p style="color: var(--silver-dark); margin-bottom: 1.5rem;">${data.subtitle}</p>
+                <div class="modal-meta">
+                    <div class="tm-meta-item">
+                        <span class="tm-meta-label">注册号</span>
+                        <span class="tm-meta-value">${data.regNo}</span>
+                    </div>
+                    <div class="tm-meta-item">
+                        <span class="tm-meta-label">有效期</span>
+                        <span class="tm-meta-value">${data.valid}</span>
+                    </div>
+                </div>
+                <div class="modal-section">
+                    <h4>核准商品/服务范围</h4>
+                    <p>${data.scope}</p>
+                </div>
+                <div class="modal-section">
+                    <h4>品牌描述</h4>
+                    <p>${data.desc}</p>
+                </div>
+                <div class="modal-price">${data.price}</div>
+                <p style="color: var(--silver-dark); font-size: 0.85rem; margin-bottom: 1.5rem;">${data.note}</p>
+                <button class="modal-cta" onclick="copyWechat()">复制微信号，立即咨询</button>
+            `;
+            
+            document.getElementById('modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(event) {
+            if (event && event.target !== document.getElementById('modal')) return;
+            document.getElementById('modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // ===== COPY WECHAT =====
+        function copyWechat() {
+            const id = document.getElementById('wechatId').textContent;
+            navigator.clipboard.writeText(id).then(() => {
+                const el = document.getElementById('wechatId');
+                const original = el.textContent;
+                el.textContent = '已复制！';
+                el.style.color = '#07C160';
+                setTimeout(() => {
+                    el.textContent = original;
+                    el.style.color = '';
+                }, 2000);
+            }).catch(() => {
+                // Fallback
+                const el = document.getElementById('wechatId');
+                alert('微信号：' + el.textContent);
+            });
+        }
+
+        // ===== ESCAPE KEY =====
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+</html>
