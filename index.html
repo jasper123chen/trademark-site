@@ -1465,11 +1465,14 @@
                     </div>
                 </div>
                 <div class="modal-section">
+                    <h4>核准商品/服务范围</h4>
+                    <p>${data.scope}</p>
+                </div>
+                <div class="modal-section">
                     <h4>品牌描述</h4>
                     <p>${data.desc}</p>
                 </div>
                 <div class="modal-price">${data.price}</div>
-                <button class="modal-cta" onclick="copyWechat()">复制微信号，立即咨询</button>
             `;
             
             document.getElementById('modal').classList.add('active');
